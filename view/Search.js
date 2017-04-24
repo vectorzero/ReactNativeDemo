@@ -14,14 +14,12 @@ const styles = StyleSheet.create({
     green : {
         backgroundColor: '#cd2d1c'
     },
-
     flexDirection: {
         flexDirection: 'row',
     },
     topStaus: {
         marginTop:25,
     },
-
     inputHeight: {
         height: 45,
     },
@@ -44,7 +42,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 4,
-
     },
 
     search: {

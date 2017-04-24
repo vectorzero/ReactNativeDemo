@@ -13,12 +13,14 @@ import {
   Platform,
 } from 'react-native';
 import Search from './Search'
+import CityList from './CityList'
+import TabSelect from './TabSelect'
 
 export default class Home extends Component{
   render(){
       return(
           <View>
-              <Search/>
+              <TabSelect/>
           </View>
       )
   }

@@ -11,6 +11,8 @@ import {
     InteractionManager,
     StatusBar,
     Platform,
+    Button,
+    Alert
 } from 'react-native';
 import ScrollableTabView,{ ScrollableTabBar } from 'react-native-scrollable-tab-view';
 import Ticket from './Ticket';
@@ -23,11 +25,23 @@ export default class TabSelect extends Component{
         });
     }
 
+    onButtonPress(){
+        Alert.alert('Button has been pressed!');
+    }
+
     render(){
         const{navigator}=this.props;
-        console.log('InteractionManager....render');
         return(
             <View style={styles.container}>
+                <View>
+                    <Button
+                        title="返回"
+                        color="yellow"
+                        onPress={()=>this.onButtonPress}/>
+                </View>
+                <View>
+                    <Text>桂林市七星公园</Text>
+                </View>
                 <StatusBar
                     backgroundColor='#1a191f'
                     barStyle='light-content'
@@ -66,5 +80,9 @@ const styles=StyleSheet.create({
         flex: 1,
         backgroundColor: '#F5FCFF',
     },
-    itemLayout:{flex:1,alignItems:'center',justifyContent:'center'}
+    itemLayout:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center'
+    }
 });
