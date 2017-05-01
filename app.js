@@ -11,6 +11,10 @@ import {
     Platform,
     StatusBar,
 } from 'react-native';
+import {Theme,NavigationBar,ListRow} from 'teaset';
+Theme.set({
+    navColor: 'red'
+});
 //引入tabbar支持包
 import TabNavigator from 'react-native-tab-navigator';
 //首页
@@ -74,7 +78,15 @@ export default class toutiao extends Component {
             >
                 {
                     tabName=='Home'?<Home/>:
-                        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}><Text>{tabContent}</Text></View>
+                        <View style={{flex:1,flexDirection: 'column'}}>
+                            <View style={{height: 50}}>
+                                <NavigationBar title='二维码门票' leftView={<NavigationBar.BackButton title='返回' />} />
+                            </View>
+                            <ListRow
+                                title='当前拥有门票数'
+                                detail='2'
+                            />
+                        </View>
                 }
             </TabNavigatorItem>
         );
