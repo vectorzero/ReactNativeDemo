@@ -8,6 +8,7 @@ import {
     ScrollView
 } from 'react-native';
 import { List } from 'antd-mobile';
+import Detail from './Detail'
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -17,16 +18,28 @@ export default class CityList extends Component{
         super();
     }
 
+    PushToDetail(){
+        const { navigator} = this.props;
+        if (navigator) {
+            navigator.push({
+                name:'Detail',
+                component:Detail,
+            })
+        }
+    }
+
     render(){
         return(
-            <List>
-                <Item arrow="horizontal" onClick={() => this.props.pressBtn}>xxxx</Item>
-                <Item arrow="horizontal" onClick={() => {}}>xxx</Item>
-                <Item arrow="horizontal" onClick={() => {}}>xx</Item>
-                <Item arrow="horizontal" onClick={() => {}}>xx</Item>
-                <Item arrow="horizontal" onClick={() => {}}>xx</Item>
-                <Item arrow="horizontal" onClick={() => {}}>x</Item>
-            </List>
+            <View>
+                <List>
+                    <Item arrow="horizontal" onClick={() => this.PushToDetail()}>111</Item>
+                    <Item arrow="horizontal" onClick={() => alert('Press!')}>2</Item>
+                    <Item arrow="horizontal" onClick={() => this.clickBtn()}>3</Item>
+                    <Item arrow="horizontal" onClick={() => this.clickBtn()}>4</Item>
+                    <Item arrow="horizontal" onClick={() => this.clickBtn()}>5</Item>
+                    <Item arrow="horizontal" onClick={() => this.clickBtn()}>6</Item>
+                </List>
+            </View>
         )
     }
 }

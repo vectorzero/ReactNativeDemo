@@ -10,154 +10,116 @@ import {
     Image,
     Platform,
     StatusBar,
+    Navigator
 } from 'react-native';
-import {Theme,NavigationBar,ListRow} from 'teaset';
+import { List } from 'antd-mobile';
+import {Theme, NavigationBar, ListRow, Label} from 'teaset';
 Theme.set({
     navColor: 'red'
 });
-//引入tabbar支持包
-import TabNavigator from 'react-native-tab-navigator';
-//首页
-import Home from './view/Home';
 
-const TabNavigatorItem =TabNavigator.Item;
+const Item = List.Item;
+const Brief = Item.Brief;
 
-const TAB_NORMAL_1=require('./images/main.png');
-const TAB_NORMAL_4=require('./images/qrcode.png');
+import Search from './view/Search'
+import Detail from './view/Detail'
 
-const TAB_PRESS_1=require('./images/main_press.png');
-const TAB_PRESS_4=require('./images/qrcode_press.png');
-
-export default class toutiao extends Component {
-
+export default class Home extends Component{
     constructor(){
         super();
         this.state={
-            selectedTab:'Home',
+            jumpIndex: 0,
+            bigText:'主界面',
+            senceDetail:''
         }
     }
 
-    /**
-     tab点击方法
-     **/
-    onPress(tabName){
-        if(tabName){
-            this.setState(
-                {
-                    selectedTab:tabName,
-                }
-            );
+    renderSence(jumpIndex,senceDetail){
+        if(jumpIndex==1){
+            return(
+                <View>
+                    <Detail senceDetail={senceDetail}/>
+                </View>
+            )
+        }else if(jumpIndex==2){
+             return(
+                <View>
+                    <ListRow
+                        title='当前拥有门票数'
+                        detail='2'
+                    />
+                </View>
+            )
+        }else if(jumpIndex<=0){
+            return(
+                <View>
+                    <Search/>
+                    <List>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'桂林七星公园',
+                                  senceDetail:'detail1'
+                              })}>桂林七星公园
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'桂林漓江风景区',
+                                  senceDetail:'detail2'
+                              })}>桂林漓江风景区
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'广西北海海洋之窗',
+                                  senceDetail:'detail3'
+                              })}>广西北海海洋之窗
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'北海银滩公园',
+                                  senceDetail:'detail4'
+                              })}>北海银滩公园
+                        </Item>
+                    </List>
+                </View>
+            )
         }
     }
-    /**
-     渲染每项
-     **/
-    renderTabView(title,tabName,tabContent,isBadge){
-        var tabNomal;
-        var tabPress;
-        switch (tabName) {
-            case 'Home':
-                tabNomal=TAB_NORMAL_1;
-                tabPress=TAB_PRESS_1;
-                break;
-            case 'Mine':
-                tabNomal=TAB_NORMAL_4;
-                tabPress=TAB_PRESS_4;
-                break;
-            default:
 
-        }
+    render(){
         return(
-            <TabNavigatorItem
-                title={title}
-                renderIcon={()=><Image style={styles.tabIcon} source={tabNomal}/>}
-                renderSelectedIcon={()=><Image style={styles.tabIcon} source={tabPress}/>}
-                selected={this.state.selectedTab===tabName}
-                selectedTitleStyle={{color:'#f85959'}}
-                onPress={()=>this.onPress(tabName)}
-            >
-                {
-                    tabName=='Home'?<Home/>:
-                        <View style={{flex:1,flexDirection: 'column'}}>
-                            <View style={{height: 50}}>
-                                <NavigationBar title='二维码门票' leftView={<NavigationBar.BackButton title='返回' />} />
-                            </View>
-                            <ListRow
-                                title='当前拥有门票数'
-                                detail='2'
-                            />
+          <View>
+            <View style={{height: 50}}>
+                <NavigationBar
+                    style={{backgroundColor: 'red', height: 50}}
+                    title={
+                        <View style={{flex: 1, paddingLeft: 4, paddingRight: 4, alignItems: 'center'}}>
+                            <Label style={{color:'white',fontSize: 18}} text={this.state.bigText} />
                         </View>
-                }
-            </TabNavigatorItem>
-        );
-    }
-
-    /**
-     自定义tabbar
-     **/
-    tabBarView(){
-        return (
-            <View style={{flex:1}}>
-                <TabNavigator
-                    tabBarStyle={styles.tab}
-                >
-                    {this.renderTabView('主界面','Home','主界面',true)}
-                    {this.renderTabView('二维码门票','Mine','二维码门票',false)}
-                </TabNavigator>
+                    }
+                    rightView={
+                        <View style={{flexDirection: 'row'}}>
+                            <NavigationBar.IconButton icon={require('./images/qrcode.png')}  
+                                onPress={()=>this.setState({
+                                    jumpIndex:2,
+                                    bigText:'二维码门票',
+                                    smallText:'详情'
+                            })}/>
+                        </View>
+                    }
+                    leftView={
+                        this.state.jumpIndex!==0?
+                            <NavigationBar.BackButton title='返回' 
+                                onPress={()=>this.setState({jumpIndex:this.state.jumpIndex-1})} />
+                        :<Text></Text>
+                    }
+                />
             </View>
-        );
-    }
-
-
-    render() {
-        var tabBarView=this.tabBarView();
-        return (
-            <View style={styles.container}>
-                {tabBarView}
-            </View>
-        );
+            {this.renderSence(this.state.jumpIndex,this.state.senceDetail)}
+          </View>
+      )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5FCFF',
-
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    tab:{
-        height: 52,
-        alignItems:'center',
-        backgroundColor:'#f4f5f6',
-    },
-    tabIcon:{
-        width:25,
-        height:25,
-    },
-    badgeView:{
-        width:22,
-        height:14 ,
-        backgroundColor:'#f85959',
-        borderWidth:1,
-        marginLeft:10,
-        marginTop:5,
-        borderColor:'#FFF',
-        alignItems:'center',
-        justifyContent:'center',
-        borderRadius:8,
-    },
-    badgeText:{
-        color:'#fff',
-        fontSize:8,
-    }
-});
