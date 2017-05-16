@@ -1,3 +1,7 @@
+/**
+ * 景点轮播图页面
+ */
+
 import React, {Component, PropTypes} from 'react';
 import {StyleSheet, View, Text, Image, ScrollView, Dimensions} from 'react-native';
 import {NavigationPage, ListRow, Carousel, PullPicker} from 'teaset';

@@ -1,3 +1,7 @@
+/**
+ * 景点介绍页面
+ */
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -16,12 +20,9 @@ Theme.set({
     navColor: 'red'
 });
 import CarouselPic from './Carousel'
-//import Back from './Back'
 import BookTicket from './Book'
 import Remain from './Remain'
 import Introduce from './Introduce'
-import PayPage from './Pay'
-//import Home from './Home'
 
 export default class Detail extends Component{
     constructor(){

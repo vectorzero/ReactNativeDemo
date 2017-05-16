@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2017-04-18.
- */
 import React, { Component } from 'react';
 import {
     AppRegistry,
@@ -8,16 +5,16 @@ import {
     Text,
     View,
     Image,
-    Platform,
-    StatusBar,
-    Navigator
+    Navigator,
+    Dimensions,
+    WebView
 } from 'react-native';
 import { List } from 'antd-mobile';
 import {Theme, NavigationBar, ListRow, Label} from 'teaset';
 Theme.set({
     navColor: 'red'
 });
-
+const {width, height} = Dimensions.get('window');
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -43,17 +40,22 @@ export default class Home extends Component{
             )
         }else if(jumpIndex==2){
              return(
-                <View>
+                <View style={{height:height}}>
                     <ListRow
                         title='当前拥有门票数'
-                        detail='2'
+                        detail='1'
                     />
+                    <WebView automaticallyAdjustContentInsets={false}
+                             style={styles.webView}
+                             source={require('./view/qrcode.html')}
+                             javaScriptEnabled={true}
+                             domStorageEnabled={true}
+                             startInLoadingState={true}/>
                 </View>
             )
         }else if(jumpIndex<=0){
             return(
                 <View>
-                    <Search/>
                     <List>
                         <Item arrow="horizontal" 
                               onClick={()=>this.setState({
@@ -91,7 +93,7 @@ export default class Home extends Component{
 
     render(){
         return(
-          <View>
+          <View style={{height:height,backgroundColor:"#fff"}}>
             <View style={{height: 50}}>
                 <NavigationBar
                     style={{backgroundColor: 'red', height: 50}}
@@ -113,7 +115,7 @@ export default class Home extends Component{
                     leftView={
                         this.state.jumpIndex!==0?
                             <NavigationBar.BackButton title='返回' 
-                                onPress={()=>this.setState({jumpIndex:this.state.jumpIndex-1})} />
+                                onPress={()=>this.setState({jumpIndex:0,bigText:'主界面'})} />
                         :<Text></Text>
                     }
                 />
@@ -123,3 +125,9 @@ export default class Home extends Component{
       )
     }
 }
+
+const styles = StyleSheet.create({
+  webView: {
+    height: 350,
+  }
+});

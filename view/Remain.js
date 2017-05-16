@@ -1,3 +1,7 @@
+/**
+ * 已售/剩余票数
+ */
+
 import React, {Component, PropTypes} from 'react';
 import {View, ScrollView, Switch, StyleSheet} from 'react-native';
 import {Theme,Button,Label,ListRow,Popover} from 'teaset';
