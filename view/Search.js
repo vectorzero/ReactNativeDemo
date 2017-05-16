@@ -10,7 +10,7 @@ export default class Search extends Component{
     constructor(){
         super();
         this.state={
-            value: '七星岩'
+            value: ''
         }
     }
 

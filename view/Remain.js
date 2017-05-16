@@ -26,15 +26,43 @@ export default class Remain extends Component{
         }else if(detail=='detail3'){
             return(
                 <View style={styles.RemainList}>
-                    <View style={{flex:1}}><ListRow title='已订票数：200'/></View>
-                    <View style={{flex:1}}><ListRow title='剩余票数：300'/></View>
+                    <View style={{flex:1}}><ListRow title='已订票数：100'/></View>
+                    <View style={{flex:1}}><ListRow title='剩余票数：310'/></View>
                 </View>
             )
         }else if(detail=='detail4'){
             return(
                 <View style={styles.RemainList}>
+                    <View style={{flex:1}}><ListRow title='已订票数：200'/></View>
+                    <View style={{flex:1}}><ListRow title='剩余票数：184'/></View>
+                </View>
+            )
+        }else if(detail=='detail5'){
+            return(
+                <View style={styles.RemainList}>
                     <View style={{flex:1}}><ListRow title='已订票数：400'/></View>
-                    <View style={{flex:1}}><ListRow title='剩余票数：135'/></View>
+                    <View style={{flex:1}}><ListRow title='剩余票数：145'/></View>
+                </View>
+            )
+        }else if(detail=='detail6'){
+            return(
+                <View style={styles.RemainList}>
+                    <View style={{flex:1}}><ListRow title='已订票数：200'/></View>
+                    <View style={{flex:1}}><ListRow title='剩余票数：241'/></View>
+                </View>
+            )
+        }else if(detail=='detail7'){
+            return(
+                <View style={styles.RemainList}>
+                    <View style={{flex:1}}><ListRow title='已订票数：400'/></View>
+                    <View style={{flex:1}}><ListRow title='剩余票数：105'/></View>
+                </View>
+            )
+        }else if(detail=='detail8'){
+            return(
+                <View style={styles.RemainList}>
+                    <View style={{flex:1}}><ListRow title='已订票数：100'/></View>
+                    <View style={{flex:1}}><ListRow title='剩余票数：201'/></View>
                 </View>
             )
         }

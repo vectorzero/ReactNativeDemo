@@ -56,6 +56,7 @@ export default class Home extends Component{
         }else if(jumpIndex<=0){
             return(
                 <View>
+                    <Search/>
                     <List>
                         <Item arrow="horizontal" 
                               onClick={()=>this.setState({
@@ -67,23 +68,51 @@ export default class Home extends Component{
                         <Item arrow="horizontal" 
                               onClick={()=>this.setState({
                                   jumpIndex:1,
-                                  bigText:'桂林漓江风景区',
+                                  bigText:'桂林市象山景区',
                                   senceDetail:'detail2'
-                              })}>桂林漓江风景区
+                              })}>桂林市象山景区
                         </Item>
                         <Item arrow="horizontal" 
                               onClick={()=>this.setState({
                                   jumpIndex:1,
-                                  bigText:'广西北海海洋之窗',
+                                  bigText:'桂林芦笛岩',
                                   senceDetail:'detail3'
-                              })}>广西北海海洋之窗
+                              })}>桂林芦笛岩
                         </Item>
                         <Item arrow="horizontal" 
                               onClick={()=>this.setState({
                                   jumpIndex:1,
-                                  bigText:'北海银滩公园',
+                                  bigText:'桂林独秀峰王城',
                                   senceDetail:'detail4'
-                              })}>北海银滩公园
+                              })}>桂林独秀峰王城
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'桂林两江四湖',
+                                  senceDetail:'detail5'
+                              })}>桂林两江四湖
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'阳朔大榕树',
+                                  senceDetail:'detail6'
+                              })}>阳朔大榕树
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'印象刘三姐',
+                                  senceDetail:'detail7'
+                              })}>印象刘三姐
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'玉圭园凯旋王国陆地乐园',
+                                  senceDetail:'detail8'
+                              })}>玉圭园凯旋王国陆地乐园
                         </Item>
                     </List>
                 </View>
