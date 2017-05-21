@@ -23,6 +23,7 @@ import CarouselPic from './Carousel'
 import BookTicket from './Book'
 import Remain from './Remain'
 import Introduce from './Introduce'
+import SelectTime from './SelectTime'
 
 export default class Detail extends Component{
     constructor(){
@@ -45,7 +46,11 @@ export default class Detail extends Component{
             </View>
             <View style={{marginTop:10}}>
                 <Label type='danger' size='sm' text='友情提示：请至少提早一天预订' />
-                <BookTicket senceDetail={this.props.senceDetail}/>
+                <SelectTime/>
+                <BookTicket 
+                        senceDetail={this.props.senceDetail}
+                        jumpToPay={this.props.jumpToPay}
+                />
                 <Label type='danger' size='sm' text='温馨提示：游客在景区内请保管好财物' />
                 <Remain senceDetail={this.props.senceDetail}/>
             </View>

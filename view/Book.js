@@ -12,7 +12,7 @@ export default class BookTicket extends Component{
     renderPrice(detail){
         if(detail=='detail1'){
             return(
-                 <ListRow title='当前预订价格:￥70/位' accessory='indicator' detail='预订' onPress={() => alert('Press!')}/>
+                 <ListRow title='当前预订价格:￥70/位' accessory='indicator' detail='预订' onPress={() => this.props.jumpToPay()}/>
             )
         }else if(detail=='detail2'){
             return(

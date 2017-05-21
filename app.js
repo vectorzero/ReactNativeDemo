@@ -7,7 +7,8 @@ import {
     Image,
     Navigator,
     Dimensions,
-    WebView
+    WebView,
+    ScrollView
 } from 'react-native';
 import { List } from 'antd-mobile';
 import {Theme, NavigationBar, ListRow, Label} from 'teaset';
@@ -20,6 +21,7 @@ const Brief = Item.Brief;
 
 import Search from './view/Search'
 import Detail from './view/Detail'
+import PayPage from './view/Pay'
 
 export default class Home extends Component{
     constructor(){
@@ -31,12 +33,16 @@ export default class Home extends Component{
         }
     }
 
-    renderSence(jumpIndex,senceDetail){
+    jumpToPay(){
+        //this.hello();
+    }
+
+    renderSence(jumpIndex,senceDetail,jumpToPay){
         if(jumpIndex==1){
             return(
-                <View>
-                    <Detail senceDetail={senceDetail}/>
-                </View>
+                <ScrollView style={{marginBottom:20}}>
+                    <Detail senceDetail={senceDetail} jumpToPay={jumpToPay}/>
+                </ScrollView>
             )
         }else if(jumpIndex==2){
              return(
@@ -51,6 +57,12 @@ export default class Home extends Component{
                              javaScriptEnabled={true}
                              domStorageEnabled={true}
                              startInLoadingState={true}/>
+                </View>
+            )
+        }else if(jumpIndex==3){
+             return(
+                <View style={{height:height}}>
+                    <PayPage/>
                 </View>
             )
         }else if(jumpIndex<=0){
@@ -114,6 +126,41 @@ export default class Home extends Component{
                                   senceDetail:'detail8'
                               })}>玉圭园凯旋王国陆地乐园
                         </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'北京富国海底世界',
+                                  senceDetail:'detail8'
+                              })}>北京富国海底世界
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'东方明珠',
+                                  senceDetail:'detail8'
+                              })}>东方明珠
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'上海欢乐谷',
+                                  senceDetail:'detail8'
+                              })}>上海欢乐谷
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'颐和园',
+                                  senceDetail:'detail8'
+                              })}>颐和园
+                        </Item>
+                        <Item arrow="horizontal" 
+                              onClick={()=>this.setState({
+                                  jumpIndex:1,
+                                  bigText:'圆明园遗址',
+                                  senceDetail:'detail8'
+                              })}>圆明园遗址
+                        </Item>
                     </List>
                 </View>
             )
@@ -149,7 +196,7 @@ export default class Home extends Component{
                     }
                 />
             </View>
-            {this.renderSence(this.state.jumpIndex,this.state.senceDetail)}
+            {this.renderSence(this.state.jumpIndex,this.state.senceDetail,this.jumpToPay)}
           </View>
       )
     }

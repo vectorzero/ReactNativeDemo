@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import { View, ScrollView, Text} from 'react-native';
-import {Select, Label,ListRow,Input,Button,ActionSheet,Theme,NavigationBar} from 'teaset';
+import {Select, Label,ListRow,Input,Button,ActionSheet,Theme,NavigationBar,Toast} from 'teaset';
 Theme.set({
     navColor: 'red'
 });
@@ -20,7 +20,7 @@ export default class PayPage extends Component{
     }
     show(modal) {
         let items = [
-            {title: '确认', onPress: () => alert('支付中...')}
+            {title: '确认', onPress: () => Toast.message('支付成功')}
         ];
         let cancelItem = {title: '取消'};
         ActionSheet.show(items, cancelItem, {modal});
@@ -28,9 +28,6 @@ export default class PayPage extends Component{
     render() {
         return (
             <View style={{flex: 1, flexDirection: 'column'}}>
-                <View style={{height: 50}}>
-                    <NavigationBar title='门票预订' leftView={<NavigationBar.BackButton title='返回' />} />
-                </View>
                 <ListRow
                     title='支付方式'
                     detail={
