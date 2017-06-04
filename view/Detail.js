@@ -50,6 +50,7 @@ export default class Detail extends Component{
                 <BookTicket 
                         senceDetail={this.props.senceDetail}
                         jumpToPay={this.props.jumpToPay}
+                        renderSence={this.props.renderSence}
                 />
                 <Label type='danger' size='sm' text='温馨提示：游客在景区内请保管好财物' />
                 <Remain senceDetail={this.props.senceDetail}/>

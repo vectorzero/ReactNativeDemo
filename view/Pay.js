@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import { View, ScrollView, Text} from 'react-native';
-import {Select, Label,ListRow,Input,Button,ActionSheet,Theme,NavigationBar,Toast} from 'teaset';
+import {Select, Label, ListRow,Input,Button,ActionSheet,Theme,NavigationBar,Toast} from 'teaset';
 Theme.set({
     navColor: 'red'
 });
@@ -20,7 +20,7 @@ export default class PayPage extends Component{
     }
     show(modal) {
         let items = [
-            {title: '确认', onPress: () => Toast.message('支付成功')}
+            {title: '确认', onPress: () => {Toast.message('支付成功'),this.props.changeTickets()}}
         ];
         let cancelItem = {title: '取消'};
         ActionSheet.show(items, cancelItem, {modal});
@@ -47,7 +47,10 @@ export default class PayPage extends Component{
                             onChangeText={text => this.setState({valueInput: text})}
                          />}
                 />
-                <Button style={{marginTop:50,marginLeft:10,marginRight:10}} type='danger' title='支付' size='lg' onPress={() => this.show(true)}/>
+                <Button style={{marginTop:50,marginLeft:10,marginRight:10}} 
+                        type='danger' title='支付' size='lg' 
+                        onPress={() => this.show(true)}
+                />
             </View>
         );
     }

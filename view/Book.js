@@ -5,18 +5,18 @@
 import React, {Component, PropTypes} from 'react';
 import {Platform, View, ScrollView, Switch} from 'react-native';
 import {Theme,Button,Label,ListRow,Popover} from 'teaset';
-import PayPage from './Pay'
+//import PayPage from './Pay'
 
 export default class BookTicket extends Component{
    
     renderPrice(detail){
         if(detail=='detail1'){
             return(
-                 <ListRow title='当前预订价格:￥70/位' accessory='indicator' detail='预订' onPress={() => this.props.jumpToPay()}/>
+                 <ListRow title='当前预订价格:￥70/位' accessory='indicator' detail='预订' onPress={() => this.props.jumpToPay(3)}/>
             )
         }else if(detail=='detail2'){
             return(
-                <ListRow title='当前预订价格:￥60/位' accessory='indicator' detail='预订' onPress={() => alert('Press!')}/>
+                <ListRow title='当前预订价格:￥60/位' accessory='indicator' detail='预订' onPress={() => Hello('eee')}/>
             )
         }else if(detail=='detail3'){
             return(

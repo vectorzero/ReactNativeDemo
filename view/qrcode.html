@@ -7,27 +7,52 @@
 	<style type="text/css">
 		.codeImg{
 			float: left;
-			margin-right: 10px;
+			margin-left: 100px;
+      margin-bottom: 30px;
 		}
 	</style>
 </head>
 <body>
-    <div id="qrcode" class="codeImg"></div>
+    <div id="qrcode1" class="codeImg"></div>
+    <div id="qrcode2" class="codeImg"></div>
+    <div id="qrcode3" class="codeImg"></div>
     <script type="text/javascript" src="./jquery.min.js"></script>
     <script type="text/javascript" src="./qrcode.min.js"></script>
     <script type="text/javascript">
-      var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width: 100,
-        height: 100,
+      var qrcode1 = new QRCode(document.getElementById("qrcode1"), {
+        width: 150,
+        height: 150,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.L
       });
-      function makeCode(Code) {
-        qrcode.makeCode(Code);
+      var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
+        width: 150,
+        height: 150,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.L
+      });
+      var qrcode3 = new QRCode(document.getElementById("qrcode3"), {
+        width: 150,
+        height: 150,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.L
+      });
+      function makeCode1(Code) {
+        qrcode1.makeCode(Code);
+      }
+      function makeCode2(Code) {
+        qrcode2.makeCode(Code);
+      }
+      function makeCode3(Code) {
+        qrcode3.makeCode(Code);
       }
       
-      makeCode('test');
+      makeCode1('景点名称【桂林七星公园】游览时间段【上午】');
+      makeCode2('景点名称【桂林象山景区】游览时间段【中午】');
+      makeCode3('景点名称【桂林芦笛岩】游览时间段【下午】');
     </script>
 </body>
 </html>
